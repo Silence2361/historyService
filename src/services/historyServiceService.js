@@ -11,7 +11,8 @@ class HistoryService {
     );
 
     if (existing) {
-      throw new Error("Duplicate entry. Action already logged.");
+      console.warn("Duplicate entry detected. Skipping log action.");
+      return existing;
     }
     if (!action || !["create", "update"].includes(action)) {
       throw new Error(
